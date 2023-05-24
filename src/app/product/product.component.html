@@ -1,20 +1,53 @@
-<div class="card">
-    <div class="card-header">
-        <h1 class="card-title">Header</h1>
-        <img class="card-img-top" src="" alt="">
-    </div>
-    
-        <div class="card-body">
+<div class="grid-view" *ngIf="view=='grid'">
+    <div class="card">
+        <div class="card-header text-center">
+            <h1 class="card-title">Header</h1>
+        </div>
+        <div>
+            <img class="card-img-top" src="../../assets/images/celulares/iphone_11.webp" alt="">   
+        </div>
+        
+        <div class="card-body text-center">
             <h2 class="card-title">Title</h2>
             <h3 class="card-subtitle text-primary">12 products disponibles</h3>
             <p class="card-text">Description</p>
         </div>
-
-    <div class="card-body">
-        <h1 class="text-success">FinalPrice <span class="text-primary">-20%</span></h1>
-        <h2 class="text-danger text-decoration-line-through">Original Price</h2>
-    </div>
-    <div class="card-footer d-grid gap-2">
-        <button class="btn btn-outline-success">Add Cart</button>
+    
+        <div class="card-body text-center">
+            <h1 class="text-success">FinalPrice <span class="text-primary">-20%</span></h1>
+            <h2 class="text-danger text-decoration-line-through">Original Price</h2>
+        </div>
+        <div class="card-footer text-center d-grid gap-2">
+            <button class="btn btn-outline-success">Add Cart</button>
+        </div>
     </div>
 </div>
+<div class="list-view" *ngIf="view=='list'">
+    <div class="card d-flex flex-column">
+        <div class="row">
+            <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
+                <img class="img-fluid rounded-start" src="../../assets/images/celulares/iphone_11.webp" alt="">   
+            </div>
+            <div class="col">
+                <div class="card-header text-center">
+                    <h1 class="card-title">Header</h1>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Title</h2>
+                    <h3 class="card-subtitle text-primary">12 products disponibles</h3>
+                    <p class="card-text">Description</p>
+                </div>
+            
+                <div class="card-body">
+                    <h1 class="text-success">FinalPrice <span class="text-primary">-20%</span></h1>
+                    <h2 class="text-danger text-decoration-line-through">Original Price</h2>
+                </div>
+                <div class="card-footer text-center d-grid gap-2">
+                    <button class="btn btn-outline-success">Add Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</div>
+

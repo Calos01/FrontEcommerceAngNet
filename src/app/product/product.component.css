@@ -1,0 +1,17 @@
+:host{
+    display: block;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.195);
+    transition: transform 200ms ease-in-out;
+}
+:host:hover{
+    transform:scale(1.03) 
+}
+img{
+    cursor: pointer;
+    transition: transform 100ms ease-in;
+}
+img:hover{
+    transform: scale(1.08);
+}
