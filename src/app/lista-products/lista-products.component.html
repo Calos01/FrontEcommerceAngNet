@@ -1,5 +1,4 @@
 <div class="container-fluid d-flex justify-content-around align-items-center">
-    <app-product class="w-25 mb-5"></app-product>   
-    <app-product class="w-25 mb-5"></app-product>   
-    <app-product class="w-25 mb-5"></app-product>   
+    <!-- cantidad de productos que se muestra este caso 1 1 1 son 3 -->
+    <app-product class="w-25 mb-5" *ngFor="let item of [1,1,1]"></app-product>   
 </div>
