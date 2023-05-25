@@ -1,0 +1,29 @@
+<div class="mx-5 border border-dark">
+    <div class="d-flex justify-content-between">
+        <div class="btn-group" role="group">
+            <button class="btn btn-outline-dark ms-5" [ngClass]="{'active':view=='grid'}" (click)="view='grid'">Grid</button>
+            <button class="btn btn-outline-dark" [ngClass]="{'active':view=='list'}" (click)="view='list'">List</button>
+        </div>
+        <div class="d-flex">
+            <span class="justify-content-center fw-bold text-center me-5 mt-2">SortBy</span>
+            <div class="btn-group" role="group">
+                <button class="btn btn-outline-dark" [ngClass]="{'active':sortby=='default'}" (click)="sortby='default'">Default</button>
+                <button class="btn btn-outline-dark" [ngClass]="{'active':sortby=='lth'}" (click)="sortby='lth'">Low-High</button>
+                <button class="btn btn-outline-dark me-5" [ngClass]="{'active':sortby=='htl'}" (click)="sortby='htl'">High-Low</button>
+            </div>
+        </div>
+    </div>
+<!-- grid porductos -->
+    <div class="d-flex my-5" *ngIf="view=='grid'">
+        <div class="col-3" *ngFor="let item of [1,1,1,1]">
+            <app-product class="mx-5"></app-product>
+        </div>
+    </div>
+    
+<!-- lista porductos -->
+    <div *ngIf="view=='list'">
+        <div class="d-flex justify-content-center my-5" *ngFor="let item of [1,1,1,1]">
+            <app-product [view]="'list'"></app-product>
+        </div>
+    </div>
+</div>
