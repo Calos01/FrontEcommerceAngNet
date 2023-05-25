@@ -14,12 +14,14 @@
         </div>
     </div>
 <!-- grid porductos -->
-    <div class="d-flex my-5" *ngIf="view=='grid'">
-        <div class="col-3" *ngFor="let item of [1,1,1,1]">
-            <app-product class="mx-5"></app-product>
+    <div class="my-5" *ngIf="view=='grid'">
+        <div class="row">
+            <div class="col-3" *ngFor="let item of [1,1,1,1,1,1,1,1]">
+                <app-product class="mx-3"></app-product>
+            </div>
         </div>
     </div>
-    
+
 <!-- lista porductos -->
     <div *ngIf="view=='list'">
         <div class="d-flex justify-content-center my-5" *ngFor="let item of [1,1,1,1]">
