@@ -1,7 +1,11 @@
 <div class="container-home mx-auto border border-dark">
     <div *ngFor="let item of listproduct">
-        <div>
+        <div class="home-banner position-relative" >
+            <button type="button" class="btn btn-outline-light">Shop Now</button>
             <img class="img-fluid w-100" src="../../assets/images/{{item.bannerimage}}" alt="">
+        </div>
+        <div class="home-product py-5">
+            <app-lista-products  [categories]="item.categories"></app-lista-products>
         </div>
     </div>
 </div>
