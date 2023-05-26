@@ -1,0 +1,12 @@
+.image-thumbnail>img{
+    width: 17%;
+    height: 5.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(122, 117, 117, 0.842);
+    
+}
+.image-thumbnail>img:hover{
+    transform:scale(1.05);
+    box-shadow: 0 0 10px rgba(37, 36, 36, 0.842);
+    transition: transform 200ms ease-in-out;
+}

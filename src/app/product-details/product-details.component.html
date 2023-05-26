@@ -1,0 +1,52 @@
+<div class="border border-dark">
+    <div class="row">
+        <!-- imagen -->
+        <div class="col-4">
+            <div class="d-flex justify-content-center align-items-center my-5">
+                <img src="../../assets/images/celulares/{{imageindex}}.webp" alt="" class="" style="max-width: 20rem; height: 20rem;">
+            </div>
+            <div class="image-thumbnail d-flex justify-content-center align-items-center gap-4 m-4">
+                <img src="../../assets/images/celulares/1.webp" alt="" (click)="imageindex=1">
+                <img src="../../assets/images/celulares/2.webp" alt="" (click)="imageindex=2">
+                <img src="../../assets/images/celulares/3.webp" alt="" (click)="imageindex=3">
+                <img src="../../assets/images/celulares/4.webp" alt="" (click)="imageindex=4">
+                <img src="../../assets/images/celulares/5.webp" alt="" (click)="imageindex=5">
+            </div>
+        </div>
+        <!-- detalles -->
+        <div class="col-8">
+            <div class="card-header text-center">
+                <h1 class="card-title">Header</h1>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">Title</h2>
+                <h3 class="card-subtitle text-primary">12 products disponibles</h3>
+                <p class="card-text">Description</p>
+            </div>
+        
+            <div class="card-body">
+                <h1 class="text-success">FinalPrice <span class="text-primary">-20%</span></h1>
+                <h2 class="text-danger text-decoration-line-through">Original Price</h2>
+            </div>
+            <div class="card-footer text-center d-grid gap-2">
+                <button class="btn btn-outline-success">Add Cart</button>
+            </div>
+            <div>
+                <h3>Descripcion</h3>
+                <ul *ngFor="let item of [1,1,1,1,1]">
+                    <li>{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2>Productos Sugeridos</h2>
+        <div class="col-12">
+            <app-lista-products></app-lista-products>
+        </div>
+
+    </div>
+    <div class="row">
+
+    </div>
+</div>
