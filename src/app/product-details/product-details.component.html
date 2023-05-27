@@ -1,4 +1,4 @@
-<div class="border border-dark">
+<div class="border border-dark mx-5">
     <div class="row">
         <!-- imagen -->
         <div class="col-4">
@@ -44,9 +44,33 @@
         <div class="col-12">
             <app-lista-products></app-lista-products>
         </div>
-
     </div>
     <div class="row">
-
+        <div class="col-6 p-4">
+            <h3>Escribe un comentario</h3>
+            <textarea cols="100" rows="4"></textarea>
+            <div class="d-flex align-items-start mt-4">
+                <button class="btn btn-outline-secondary">Save Review</button>
+                <div class="ms-5">
+                    <p class="text-danger">Registrate primero para que puedas escribir un comentario</p>
+                    <p class="text-success">Tu Comentario ha sido guardado exitosamente</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h3>Otros comentarios</h3>
+            <h5 *ngIf="1">No tienes comentarios</h5>
+            <div *ngFor="let item of [1,2,3]">
+                <div class="card my-2 me-4">
+                    <div class="card-header d-flex justify-content-between">
+                        <p class="card-title"> Usuario Biscor</p>
+                        <p class="card-title fst-italic">Publicado el: <span class="fw-bold"> {{"26 MAY 2023" | date:"dd-MMM-yyyy"}}</span></p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Comentario</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
