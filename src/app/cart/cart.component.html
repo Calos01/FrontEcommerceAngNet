@@ -1,0 +1,61 @@
+<div class="container-home border border-dark mx-5">
+    <!-- Current Cart -->
+    <div class="d-flex justify-content-center col-3 my-3">
+        <h2 class="border border-dark border-rounded rounded-pill px-5">Current Cart</h2>
+    </div>
+    <div class="col-6 d-flex-col justify-content-center align-items-center mx-auto">
+        <button class="btn btn-outline-success col-12 mb-3">Order</button>
+        <table class="table table-bordered border-dark col-12 shadow mx-auto">
+            <tr class="">
+                <td colspan="7" class="p-2">Total Items</td>
+                <td colspan="5" class="fw-bold text-dark">5</td>
+            </tr>
+            <tr>
+                <td colspan="7" class="p-2">Total Price</td>
+                <td colspan="5" class="fw-bold text-danger">10,000</td>
+            </tr>
+            <tr>
+                <td colspan="7" class="p-2">Shipping Charges</td>
+                <td colspan="5" class="fw-bold text-danger">1,000</td>
+            </tr>
+            <tr>
+                <td colspan="7" class="p-2">Discount</td>
+                <td colspan="5" class="fw-bold text-success">200</td>
+            </tr>
+            <tr>
+                <td colspan="7" class="p-2">You have to pay</td>
+                <td colspan="5" class="fw-bold text-success">10,800</td>
+            </tr>
+        </table>
+    </div>
+<!-- Cart items -->
+    <div class="">
+        <h2 class="ms-5">Cart Items</h2>
+        <div class="row col-8 d-flex justify-content-center mx-auto g-5">
+            <div class="col-6 w-5" *ngFor="let item of [1,1,1,1,1]">
+                <app-product [view]="'cartitem'"></app-product>
+            </div>
+        </div>
+    </div>
+<!-- PrevCartItems -->
+    <div class="">
+        <h2 class="ms-5">Prev Carts</h2>
+        <div *ngFor="let item of [1,1,1]">
+            <div class="card col-8 d-flex mx-auto my-4">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="fw-bold">Ordered On: <span >{{"26 May 2022"|date:"dd-MMM-yyyy"}}</span></h4>
+                    <h4 class="fw-bold">Items:5</h4>
+                    <h4 class="fw-bold">Items:10,000</h4>
+                </div>
+                
+                <div class="card-body d-flex gap-4">
+                    <div *ngFor="let item of [1,1,1,1,1]">
+                        <app-product [view]="'prevcartitem'"></app-product>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

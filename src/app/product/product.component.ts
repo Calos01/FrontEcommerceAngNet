@@ -7,7 +7,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class ProductComponent implements OnInit{
   //para mostrar vista de forma grid o list
-  @Input() view: 'grid'|'list'='grid';
+  @Input() view: 'grid'|'list'|'cartitem'|'prevcartitem'='grid';
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
