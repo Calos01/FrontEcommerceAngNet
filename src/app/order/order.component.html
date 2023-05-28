@@ -28,14 +28,14 @@
             </tr>
         </table>
     </div>
-    <!-- payment Method -->
+    <!-- Metodo de Pago -->
     <div >
-        <div class="d-flex justify-content-center col-3 my-3">
-        <h2 class="border border-dark border-rounded rounded-pill px-5">Payment Method</h2>
+        <div class="d-flex justify-content-start col-auto m-4">
+        <h2 class="border border-dark border-rounded rounded-pill px-5">Metodo de Pago</h2>
         </div>
-        <div>
-            <h4>Seleccionar metodo de pago:</h4>
-            <select class="form-select" [formControl]="metodopagoform" >
+        <div class="d-flex">
+            <h4 class="col-6 d-flex justify-content-end pe-5">Seleccionar metodo de pago:</h4>
+            <select class="form-select me-5" [formControl]="metodopagoform" >
                 <option value="0">Seleccionar Pago</option>
                 <option *ngFor="let metodopago of [1,2,3]" value="{{metodopago}}">
                     option
@@ -49,23 +49,23 @@
     </div>
     <div class="col-6 d-flex-col justify-content-center align-items-center mx-auto" *ngIf="metodopagoname!=''">
         <table class="table table-bordered border-dark col-12 shadow mx-auto">
-            <tr class="">
-                <td colspan="7" class="p-2">Tu pago es</td>
-                <td colspan="5" class="fw-bold text-dark">10,505</td>
+            <tr >
+                <td class="p-2 col-7">Tu pago es</td>
+                <td class="fw-bold text-dark col-5">10,505</td>
             </tr>
             <tr>
-                <td colspan="7" class="p-2">Metodo de pago</td>
-                <td colspan="5" class="fw-bold text-danger">Izipay</td>
+                <td  class="p-2 col-7">Metodo de pago</td>
+                <td  class="fw-bold text-danger col-5">Izipay</td>
             </tr>
             <tr>
-                <td colspan="7" class="p-2">Direccion</td>
-                    <td *ngIf="true" colspan="5" class="fw-bold text-danger">la direccion ira aca. <a href="/misdatos">cambiar</a> </td>
-                    <td *ngIf="false" colspan="5" class="fw-bold text-danger">porfavor ingrese direccion <a href="/misdatos">cambiar</a> </td>
+                <td  class="p-2 col-7">Direccion</td>
+                    <td *ngIf="true" colspan="5" class="fw-bold text-danger col-5">la direccion ira aca. <a href="/misdatos">cambiar</a> </td>
+                    <td *ngIf="false" colspan="5" class="fw-bold text-danger col-5">porfavor ingrese direccion <a href="/misdatos">cambiar</a> </td>
             </tr>
             <tr>
-                <td colspan="7" class="p-2">Telefono</td>
-                    <td *ngIf="true" colspan="5" class="fw-bold text-danger">12345678. <a href="/misdatos">cambiar</a> </td>
-                    <td *ngIf="false" colspan="5" class="fw-bold text-danger">porfavor ingrese telefono <a href="/misdatos">cambiar</a> </td>
+                <td  class="p-2 col-7">Telefono</td>
+                    <td *ngIf="true"  class="fw-bold text-danger col-5">12345678. <a href="/misdatos">cambiar</a> </td>
+                    <td *ngIf="false" class="fw-bold text-danger col-5">porfavor ingrese telefono <a href="/misdatos">cambiar</a> </td>
             </tr>
             
         </table>
@@ -75,6 +75,7 @@
         <div *ngIf="!false" class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
+        <span>Error</span>
     </div>
 
 </div>
