@@ -8,3 +8,8 @@ export interface ListaProducts{
     bannerimage: string,
     categories: Categories;
 }
+
+export interface HeaderCategories{
+    categories: string,
+    subcategories: string[];
+}
