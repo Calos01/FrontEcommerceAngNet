@@ -1,25 +1,35 @@
-<header class="bg-dark text-light">
-    <div>
+<header class="bg-dark text-light px-5">
+    <div class="d-flex justify-content-between">
         <div>
-            <h1>Shopping Ecommerce</h1>
+            <h1 class="pt-2">Shopping Ecommerce</h1>
         </div>
-        <div>
-            <button>Home</button>
+        <div class="pt-3">
+            <button class="btn btn-outline-light" routerLink="/home">Home</button>
 
            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
                     Categories
                 </button>
-                    <ul class="dropdown-menu"  aria-labelledby="btnGroupDrop1">
+                    <ul class="dropdown-menu">
                         <ng-container *ngFor="let item of itemcategories; let i=index;">
-                        <li><a class="dropdown-item" href="#">{{item.categories|titlecase}}</a></li>
+                        <li class="dropdown-item text-center fw-bold">{{item.categories|titlecase}}</li>
                         <li *ngFor="let item of item.subcategories"><a class="dropdown-item" href="#">{{item|titlecase}}</a></li>
+                        <li *ngIf="i!=itemcategories.length-1">
+                            <hr class="dropdown-divider">
+                        </li>
                         </ng-container>
-                    </ul>
-            </div>
-
-            
-                        
+                    </ul> 
+            </div>           
+        </div>
+        <div class="pt-3">
+            <ul class="btn-group" role="group">
+                <li class="btn btn-outline-light">Login</li>
+                <li class="btn btn-outline-light">Register</li>
+                <li class="btn btn-outline-light">Cuenta</li>
+                <li class="btn btn-outline-light" routerLink="/cart">Carrito</li>
+                <li class="btn btn-outline-light" routerLink="/orders">Orders</li>
+                <li class="btn btn-outline-light">Salir</li>
+            </ul>
         </div>
     </div>
 </header>

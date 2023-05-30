@@ -1,3 +1,9 @@
 .container-home{
     max-width: 1500px;
 }
+main{
+    margin-top: 4rem;
+    min-height: calc(100vh-8rem);
+    z-index: 1;
+    padding: 1rem;
+}
