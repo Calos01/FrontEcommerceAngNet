@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HeaderProductDirective } from './directives/header-product.directive';
+import { HeaderProductDetailsDirective } from './directives/header-product-details.directive';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
+    HeaderProductDirective,
+    HeaderProductDetailsDirective,
     
   ],
   imports: [

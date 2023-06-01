@@ -5,11 +5,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductComponent } from './product/product.component';
+
+import { ProductopsComponent } from './productops/productops.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
-  {path:'products',component:ProductComponent},
+  {path:'productops',component:ProductopsComponent},
   {path:'product-details',component:ProductDetailsComponent},
   {path:'cart',component:CartComponent},
   {path:'orders',component:OrderComponent},

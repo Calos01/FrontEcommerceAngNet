@@ -1,5 +1,6 @@
 :host{
-    position: absolute;
+    
+    margin-top: auto;
     height: 4rem;
     width: 100%;
 }

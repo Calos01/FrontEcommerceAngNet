@@ -13,7 +13,9 @@
                     <ul class="dropdown-menu">
                         <ng-container *ngFor="let item of itemcategories; let i=index;">
                         <li class="dropdown-item text-center fw-bold">{{item.categories|titlecase}}</li>
-                        <li *ngFor="let item of item.subcategories"><a class="dropdown-item" href="#">{{item|titlecase}}</a></li>
+                        <li *ngFor="let itemsub of item.subcategories"><a class="dropdown-item" [style.cursor]="'pointer'" appHeaderProduct [categoria]="{id: 0,
+                            'category': item.categories,
+                            'subcategory': itemsub}">{{itemsub|titlecase}}</a></li>
                         <li *ngIf="i!=itemcategories.length-1">
                             <hr class="dropdown-divider">
                         </li>

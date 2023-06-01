@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HeaderCategories } from '../models/models';
 
 @Component({
@@ -18,7 +18,5 @@ export class HeaderComponent implements OnInit{
     }
   ];
   ngOnInit(): void {
-
   }
-
 }
