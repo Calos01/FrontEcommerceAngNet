@@ -16,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderProductDirective } from './directives/header-product.directive';
 import { HeaderProductDetailsDirective } from './directives/header-product-details.directive';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { HeaderProductDetailsDirective } from './directives/header-product-detai
     PageNotFoundComponent,
     HeaderProductDirective,
     HeaderProductDetailsDirective,
+    LoginComponent,
+    RegisterComponent,
     
   ],
   imports: [
