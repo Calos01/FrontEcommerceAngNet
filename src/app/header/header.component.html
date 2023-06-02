@@ -20,13 +20,13 @@
                             <hr class="dropdown-divider">
                         </li>
                         </ng-container>
-                    </ul> 
-            </div>           
+                    </ul>
+            </div>
         </div>
         <div class="pt-3">
             <ul class="btn-group" role="group">
-                <li class="btn btn-outline-light">Login</li>
-                <li class="btn btn-outline-light">Register</li>
+                <li class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalform" (click)="mostrarModal('login')">Login</li>
+                <li class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalform" (click)="mostrarModal('register')">Register</li>
                 <li class="btn btn-outline-light">Cuenta</li>
                 <li class="btn btn-outline-light" routerLink="/cart">Carrito</li>
                 <li class="btn btn-outline-light" routerLink="/orders">Orders</li>
@@ -35,3 +35,22 @@
         </div>
     </div>
 </header>
+
+<!-- modal -->
+<div class="modal fade" id="modalform" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" #modaltitle>Título del modal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" #container>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Comprendido</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -3,3 +3,7 @@
 body{
     font-family: 'Poppins', sans-serif;
 } 
+/* Para que elmodal si pueda ser visible */
+.modal-backdrop.fade.show{
+    z-index: 19;
+}

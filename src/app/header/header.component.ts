@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { HeaderCategories } from '../models/models';
+import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +9,9 @@ import { HeaderCategories } from '../models/models';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
+  @ViewChild('modaltitle') modaltitle!: ElementRef
+  @ViewChild('container',{read:ViewContainerRef, static:true}) container!:ViewContainerRef
+
   itemcategories:HeaderCategories[]=[
     {
     categories:'Tecnology',
@@ -18,5 +23,19 @@ export class HeaderComponent implements OnInit{
     }
   ];
   ngOnInit(): void {
+  }
+  mostrarModal(name:string){
+    this.container.clear()
+    let namecomp!: Type<any>;
+    if(name=='login'){
+      namecomp=LoginComponent;
+      this.modaltitle.nativeElement.textContent="Login de Usuario"
+    } 
+      
+    if(name=='register') {
+      namecomp=RegisterComponent;
+      this.modaltitle.nativeElement.textContent="Registro de Usuario"
+    }
+    this.container.createComponent(namecomp)
   }
 }
