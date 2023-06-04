@@ -8,13 +8,14 @@ import { FormBuilder, FormControl, FormGroup, RequiredValidator, Validators } fr
 })
 export class RegisterComponent implements OnInit{
   registerForm!:FormGroup
+  validrpwd:boolean=false;
 
   constructor(private fb:FormBuilder) {}
   ngOnInit(): void {
     this.registerForm=this.fb.group({
       name:['', [Validators.required,Validators.minLength(2),Validators.pattern('[a-zA-Z].*')]],
       lastname:['', [Validators.required,Validators.minLength(2),Validators.pattern('[a-zA-Z].*')]],
-      email:['', [Validators.required,Validators.email,Validators.maxLength(16)]],
+      email:['', [Validators.required,Validators.email,Validators.maxLength(30)]],
       pwd:['', [Validators.required,Validators.minLength(6),Validators.maxLength(16)]],
       rpwd:['', [Validators.required,Validators.minLength(6),Validators.maxLength(16)]]
     })
@@ -36,4 +37,7 @@ export class RegisterComponent implements OnInit{
   get rpwd():FormControl{
     return this.registerForm.get('rpwd') as FormControl
   }
+
+  //metodo
+  Registrar(){};
 }
