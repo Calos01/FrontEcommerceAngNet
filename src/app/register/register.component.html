@@ -1,5 +1,5 @@
 
-<form [formGroup]="registerForm" class="px-3">
+<form [formGroup]="registerForm" class="px-3" (ngSubmit)="Registrar()">
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Nombres</label>
@@ -59,11 +59,8 @@
              <div class="form-text text-danger" *ngIf="pwd.errors?.['required'] &&(pwd.dirty || pwd.touched)">
                 Error No se introdujeron datos
             </div>
-            <div class="form-text text-danger" *ngIf="pwd.errors?.['minLength'] &&(pwd.dirty || pwd.touched)">
+            <div class="form-text text-danger" *ngIf="!!pwd.errors?.['minLength'] || !!pwd.errors?.['maxLength'] &&(pwd.dirty || pwd.touched)">
                 Error No se introdujeron los datos minimos
-            </div>
-            <div class="form-text text-danger" *ngIf="pwd.errors?.['maxLength'] &&(pwd.dirty || pwd.touched)">
-                No se puede superara la cantidad maxima de caracteres
             </div>
         </div>
         <div class="col">
@@ -71,19 +68,19 @@
             <input type="password" class="form-control" id="rpwd" formControlName="rpwd">
 
              <!-- Error va jalar los gets del typescript--> 
-             <div class="form-text text-danger" *ngIf="rpwd.errors?.['required'] &&(rpwd.dirty || rpwd.touched)">
+            <div class="form-text text-danger" *ngIf="rpwd.errors?.['required'] &&(rpwd.dirty || rpwd.touched)">
                 Error No se introdujeron datos
             </div>
-            <div class="form-text text-danger" *ngIf="rpwd.errors?.['minLength'] &&(rpwd.dirty || rpwd.touched)">
+            <div class="form-text text-danger" *ngIf="!!rpwd.errors?.['minLength'] || !!rpwd.errors?.['maxLength'] &&(rpwd.dirty || rpwd.touched)">
                 Error No se introdujeron los datos minimos
             </div>
-            <div class="form-text text-danger" *ngIf="rpwd.errors?.['maxLength'] &&(rpwd.dirty || rpwd.touched)">
-                No se puede superara la cantidad maxima de caracteres
+            <div class="form-text text-danger" *ngIf="validrpwd">
+                Las contraseñas no coinciden
             </div>
         </div>
     </div>
     <div class="row my-3 mx-auto">
-        <button class="d-block mx-auto btn btn-outline-primary" type="submit">Crear Cuenta</button>
+        <button class="d-block mx-auto btn btn-outline-primary" type="submit" [disabled]="registerForm.invalid">Crear Cuenta</button>
     </div>
     <div class="row text-center mb-3">
         <span class="text-success fs-5">Cuenta creda!!</span>

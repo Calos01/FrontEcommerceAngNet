@@ -1,1 +1,36 @@
-<p>realizando login </p>
+<form [formGroup]="loginForm" class="px-3" (ngSubmit)="Logearse()">
+    <div class="row">
+        <div class="col">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+
+             <!-- Error va jalar los gets del typescript--> 
+             <div class="form-text text-danger" *ngIf="email.errors?.['required'] &&(email.dirty || email.touched)">
+                Error No se introdujeron datos
+            </div>
+            <div class="form-text text-danger" *ngIf="email.errors?.['email'] &&(email.dirty || email.touched)">
+                Error No se introdujo un email valido
+            </div>
+            <div class="form-text text-danger" *ngIf="email.errors?.['maxLength'] &&(email.dirty || email.touched)">
+                No se puede superara la cantidad maxima de caracteres
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="pwd" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pwd" formControlName="pwd">
+
+             <!-- Error va jalar los gets del typescript--> 
+             <div class="form-text text-danger" *ngIf="pwd.errors?.['required'] &&(pwd.dirty || pwd.touched)">
+                Error No se introdujeron datos
+            </div>
+            <div class="form-text text-danger" *ngIf="!!pwd.errors?.['minLength'] || !!pwd.errors?.['maxLength'] &&(pwd.dirty || pwd.touched)">
+                Error No se introdujeron los datos minimos
+            </div>
+        </div>
+    </div>
+    <div class="row my-3 mx-auto">
+        <button class="d-block mx-auto btn btn-outline-primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+    </div>
+</form>
