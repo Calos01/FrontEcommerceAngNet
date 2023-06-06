@@ -13,3 +13,10 @@ export interface HeaderCategories{
     categories: string,
     subcategories: string[];
 }
+
+//Este es para la navigation Categories Header
+export interface Category{
+    id: number;
+    category: string;
+    subCategory: string;
+}

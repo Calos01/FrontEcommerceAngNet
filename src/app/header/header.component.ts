@@ -1,7 +1,8 @@
 import { Component, ElementRef, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
-import { HeaderCategories } from '../models/models';
+import { Category, HeaderCategories } from '../models/models';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -11,18 +12,45 @@ import { RegisterComponent } from '../register/register.component';
 export class HeaderComponent implements OnInit{
   @ViewChild('modaltitle') modaltitle!: ElementRef
   @ViewChild('container',{read:ViewContainerRef, static:true}) container!:ViewContainerRef
-
+  /**
+   *
+   */
+  constructor(private _serviceNavigation:NavigationService) {    
+  }
   itemcategories:HeaderCategories[]=[
-    {
-    categories:'Tecnology',
-    subcategories:['celular', 'laptops']
-    },
-    {
-      categories:'Tecnohogar',
-      subcategories:['lavadora', 'refri']
-    }
+    // {
+    // categories:'Tecnology',
+    // subcategories:['celular', 'laptops']
+    // },
+    // {
+    //   categories:'Tecnohogar',
+    //   subcategories:['lavadora', 'refri']
+    // }
   ];
   ngOnInit(): void {
+    this._serviceNavigation.getListCategories().subscribe((list:Category[])=>{
+      for(let item of list){
+        let noterminado=false;
+
+        //SEGUNDO UNA VEZ QUE JALE TODO EL JSON lo que va hacer el for es agregar las subcategorias si es que los category son iguales
+        for(let itemNav of this.itemcategories){
+          //literal va comparar entre los mismos json(revisar la api ya que no hay un array de category ni subcategories son datos repetidos por eso lo hacemos asi)
+          if(itemNav.categories==item.category){
+            itemNav.subcategories.push(item.subCategory);
+            //con esto finalizaria para que no entre al if
+            noterminado=true;
+          }
+        }
+
+        //PRIMERO va entrar a este if, el fin de esto es traer todo el json que manda la api tal como esta
+        if(!noterminado){
+          this.itemcategories.push({
+            categories:item.category,
+            subcategories:[item.subCategory]
+          })
+        }
+      }
+    });
   }
   mostrarModal(name:string){
     this.container.clear()
