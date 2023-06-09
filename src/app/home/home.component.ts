@@ -9,16 +9,23 @@ export class HomeComponent {
 @Input() listproduct:ListaProducts[] =[
   {bannerimage:'banner/laptops.webp',
     categories:{
+      id: 0,
+      category: 'electronics',
+      subcategory: 'mobiles',
+    }
+  },
+  {bannerimage:'banner/celulares.jfif',
+    categories:{
       id: 1,
-      category: 'computo',
+      category: 'electronics',
       subcategory: 'laptops',
     }
   },
   {bannerimage:'banner/celulares.jfif',
     categories:{
       id: 1,
-      category: 'tecnology',
-      subcategory: 'celulares',
+      category: 'furniture',
+      subcategory: 'chairs',
     }
   }
 ]

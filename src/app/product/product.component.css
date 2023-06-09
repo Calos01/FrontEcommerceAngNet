@@ -15,3 +15,8 @@ img{
 img:hover{
     transform: scale(1.08);
 }
+.grid-view .card-text, .card-title{
+    height: 67px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
