@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category } from '../models/models';
 import { map } from 'rxjs/operators';
@@ -19,5 +19,9 @@ export class NavigationService {
       };
       return categoriaMapeada;
     })));
+  }
+  getProductos(category:string,subcategory:string,count:number){
+    return this.http.get<any[]>(this.baseurl+'GetProductos',
+    {params: new HttpParams().set('category',category).set('subcategory',subcategory).set('count',count)})
   }
 }
