@@ -13,6 +13,7 @@
                     <ul class="dropdown-menu">
                         <ng-container *ngFor="let item of itemcategories; let i=index;">
                         <li class="dropdown-item text-center fw-bold">{{item.categories|titlecase}}</li>
+                        <!-- el appHeaderProduct [categoria] esta enviando al @Input de la directiva HeaderProduct -->
                         <li *ngFor="let itemsub of item.subcategories"><a class="dropdown-item" [style.cursor]="'pointer'" appHeaderProduct [categoria]="{id: 0,
                             'category': item.categories,
                             'subcategory': itemsub}">{{itemsub|titlecase}}</a></li>

@@ -15,8 +15,19 @@ img{
 img:hover{
     transform: scale(1.08);
 }
-.grid-view .card-text, .card-title{
+.grid-view .card-text, .grid-view .card-title{
     height: 67px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-view .card-title{
+    height: 75px;
+    overflow: hidden;
+}
+
+.list-view .card-text{
+    height: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
