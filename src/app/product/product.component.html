@@ -27,7 +27,7 @@
     <div class="card d-flex flex-column">
         <div class="row">
             <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img class="img-fluid rounded-start" src="../../assets/images/celulares/1.webp" alt="" appHeaderProductDetails [prodid]="1">   
+                <img class="img-fluid rounded-start" src="../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
             </div>
             <div class="col">
                 <div class="card-header text-center">
@@ -40,7 +40,7 @@
                 </div>
             
                 <div class="card-body">
-                    <h1 class="text-success">FinalPrice <span class="text-primary">-{{product.offer.discount}}%</span></h1>
+                    <h1 class="text-success">{{utilityService.calcularFinalPrice(product.price, product.offer.discount)}}  <span class="text-primary">-{{product.offer.discount}}%</span></h1>
                     <h2 class="text-danger text-decoration-line-through">{{product.price}}</h2>
                 </div>
                 <div class="card-footer text-center d-grid gap-2">
@@ -55,7 +55,7 @@
     <div class="card d-flex flex-column">
         <div class="row">
             <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img class="img-fluid rounded-start" src="../../assets/images/celulares/1.webp" alt="" appHeaderProductDetails [prodid]="1">   
+                <img class="img-fluid rounded-start" src="../../assets/images/celulares/1.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
             </div>
             <div class="col">
                 <div class="card-body">
@@ -76,7 +76,7 @@
     <div class="card">
         <div class="row d-flex justify-content-center">
             <div class="row col-md-8 overflow-hidden justify-content-center align-items-center">
-                <img class="img-fluid rounded-start" src="../../assets/images/celulares/1.webp" alt="" appHeaderProductDetails [prodid]="1">   
+                <img class="img-fluid rounded-start" src="../../assets/images/celulares/1.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
             </div>
             <div class="row">
                 <h3 class="card-title text-center">Title</h3>

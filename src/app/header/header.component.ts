@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit{
     // }
   ];
   ngOnInit(): void {
+    //Mostrar Select de Categories
     this._serviceNavigation.getListCategories().subscribe((list:Category[])=>{
       for(let item of list){
         let noterminado=false;
