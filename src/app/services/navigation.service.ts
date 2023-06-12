@@ -24,4 +24,7 @@ export class NavigationService {
     return this.http.get<any[]>(this.baseurl+'GetProductos',
     {params: new HttpParams().set('category',category).set('subcategory',subcategory).set('count',count)})
   }
+  getProduct(id:number){
+    return this.http.get<any>(this.baseurl+'GetProduct/'+id)
+  }
 }

@@ -7,9 +7,9 @@
         <div class="d-flex">
             <span class="justify-content-center fw-bold text-center me-5 mt-2">SortBy</span>
             <div class="btn-group" role="group">
-                <button class="btn btn-outline-dark" [ngClass]="{'active':sortby=='default'}" (click)="sortby='default'">Default</button>
-                <button class="btn btn-outline-dark" [ngClass]="{'active':sortby=='lth'}" (click)="sortby='lth'">Low-High</button>
-                <button class="btn btn-outline-dark me-5" [ngClass]="{'active':sortby=='htl'}" (click)="sortby='htl'">High-Low</button>
+                <button class="btn btn-outline-dark" [ngClass]="{'active':sortby=='default'}" (click)="sortby='default'" (click)="sortByPrecio(sortby)" >Default</button>
+                <button class="btn btn-outline-dark" [ngClass]="{'active':sortby=='lth'}" (click)="sortby='lth'" (click)="sortByPrecio(sortby)">Low-High</button>
+                <button class="btn btn-outline-dark me-5" [ngClass]="{'active':sortby=='htl'}" (click)="sortby='htl'" (click)="sortByPrecio(sortby)">High-Low</button>
             </div>
         </div>
     </div>
