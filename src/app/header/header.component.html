@@ -16,7 +16,7 @@
                         <!-- el appHeaderProduct [categoria] esta enviando al @Input de la directiva HeaderProduct -->
                         <li *ngFor="let itemsub of item.subcategories"><a class="dropdown-item" [style.cursor]="'pointer'" appHeaderProduct [categoria]="{id: 0,
                             'category': item.categories,
-                            'subcategory': itemsub}">{{itemsub|titlecase}}</a></li>
+                            'subCategory': itemsub}">{{itemsub|titlecase}}</a></li>
                         <li *ngIf="i!=itemcategories.length-1">
                             <hr class="dropdown-divider">
                         </li>

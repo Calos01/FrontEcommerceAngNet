@@ -21,7 +21,6 @@
             <div class="card-body">
                 <h2 class="card-title">{{product.title}}</h2>
                 <h3 class="card-subtitle text-primary">{{product.quantity}} products disponibles</h3>
-                <p class="card-text">{{product.description}}</p>
             </div>
         
             <div class="card-body">
@@ -32,9 +31,9 @@
                 <button class="btn btn-outline-success">Add Cart</button>
             </div>
             <div>
-                <h3>Descripcion</h3>
-                <ul *ngFor="let item of ">
-                    <li>{{item}}</li>
+                <h3 class="card-text">Descripcion</h3>
+                <ul class="list-group" *ngFor="let item of product.description.split('. ')">
+                    <li class="list-group-item list-group-item-action">{{item}}</li>
                 </ul>
             </div>
         </div>
@@ -43,7 +42,7 @@
     <div class="row">
         <h2>Productos Sugeridos</h2>
         <div class="col-12">
-            <app-lista-products></app-lista-products>
+            <app-lista-products [categories]="product.productCategory"></app-lista-products>
         </div>
     </div>
     <div class="row">

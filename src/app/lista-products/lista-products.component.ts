@@ -12,7 +12,7 @@ export class ListaProductsComponent implements OnInit{
   @Input() categories: Categories={
     id: 0,
     category:'',
-    subcategory:''
+    subCategory:''
   };
   @Input() count:number=3;
   products: Product[]=[];
@@ -24,7 +24,7 @@ export class ListaProductsComponent implements OnInit{
     this.getProducts();
   }
   getProducts(){
-    this._serviceNavigation.getProductos(this.categories.category,this.categories.subcategory,this.count).subscribe((res: any[])=>{
+    this._serviceNavigation.getProductos(this.categories.category,this.categories.subCategory,this.count).subscribe((res: any[])=>{
       for(let product of res){
         this.products.push(product)
       }
