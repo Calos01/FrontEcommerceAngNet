@@ -1,7 +1,7 @@
 export interface Categories{
     id: number;
     category: string;
-    subcategory: string;
+    subCategory: string;
 }
 
 export interface ListaProducts{
@@ -43,5 +43,4 @@ export interface Product{
     price: number,
     quantity: number,
     imageName: string,
-
 }

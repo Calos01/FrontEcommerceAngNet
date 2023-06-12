@@ -10,12 +10,12 @@ export class HeaderProductDirective {
   @Input() categoria:Categories={
     id: 0,
     category: '',
-    subcategory: ''
+    subCategory: ''
   }
   @HostListener('click') abrirCategoria(){
     this.router.navigate(['/productops'],{queryParams:{
       category:this.categoria.category,
-      subcategory:this.categoria.subcategory
+      subcategory:this.categoria.subCategory
     },
     })
   }

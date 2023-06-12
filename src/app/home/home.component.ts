@@ -11,21 +11,21 @@ export class HomeComponent {
     categories:{
       id: 0,
       category: 'electronics',
-      subcategory: 'mobiles',
+      subCategory: 'mobiles',
     }
   },
   {bannerimage:'banner/celulares.jfif',
     categories:{
       id: 1,
       category: 'electronics',
-      subcategory: 'laptops',
+      subCategory: 'laptops',
     }
   },
   {bannerimage:'banner/celulares.jfif',
     categories:{
       id: 1,
       category: 'furniture',
-      subcategory: 'chairs',
+      subCategory: 'chairs',
     }
   }
 ]
