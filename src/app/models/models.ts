@@ -44,3 +44,15 @@ export interface Product{
     quantity: number,
     imageName: string,
 }
+export interface User{
+    userId: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    address: string,
+    mobile: number,
+    password: string,
+    createdAt: string,
+    modifiedAt: string
+      
+}
