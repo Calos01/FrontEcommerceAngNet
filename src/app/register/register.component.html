@@ -52,6 +52,35 @@
     </div>
     <div class="row">
         <div class="col">
+            <label for="direccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="direccion" formControlName="address">
+
+             <!-- Error va jalar los gets del typescript --> 
+             <div class="form-text text-danger" *ngIf="direccion.errors?.['required'] &&(direccion.dirty || direccion.touched)">
+                Error No se introdujeron datos
+            </div>
+
+            <div class="form-text text-danger" *ngIf="direccion.errors?.['maxLength'] &&(direccion.dirty || direccion.touched)">
+                No se puede superara la cantidad maxima de caracteres
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="mobile" class="form-label">Celular</label>
+            <input type="number" class="form-control" id="mobile" formControlName="mobile">
+
+             <!-- Error va jalar los gets del typescript--> 
+             <div class="form-text text-danger" *ngIf="mobile.errors?.['required'] &&(mobile.dirty || mobile.touched)">
+                Error No se introdujeron datos
+            </div>
+            <div class="form-text text-danger" *ngIf="mobile.errors?.['maxLength'] &&(mobile.dirty || mobile.touched)">
+                No se puede superara la cantidad maxima de caracteres
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <label for="pwd" class="form-label">Password</label>
             <input type="password" class="form-control" id="pwd" formControlName="pwd">
 
@@ -83,7 +112,7 @@
         <button class="d-block mx-auto btn btn-outline-primary" type="submit" [disabled]="registerForm.invalid">Crear Cuenta</button>
     </div>
     <div class="row text-center mb-3">
-        <span class="text-success fs-5">Cuenta creda!!</span>
+        <span class="text-success fs-5">{{resp}}</span>
     </div>
 </form>
 

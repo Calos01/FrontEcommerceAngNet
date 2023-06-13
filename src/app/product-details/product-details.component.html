@@ -48,11 +48,12 @@
     <div class="row">
         <div class="col-6 p-4">
             <h3>Escribe un comentario</h3>
-            <textarea cols="100" rows="4"></textarea>
+            <textarea cols="100" rows="4" [formControl]="controlReview"></textarea>
             <div class="d-flex align-items-start mt-4">
-                <button class="btn btn-outline-secondary">Save Review</button>
+                <button class="btn btn-outline-secondary" (click)="saveReview()">Save Review</button>
                 <div class="ms-5">
                     <p class="text-danger">Registrate primero para que puedas escribir un comentario</p>
+                    <p class="text-danger" *ngIf="showError">El comentario esta vacio</p>
                     <p class="text-success">Tu Comentario ha sido guardado exitosamente</p>
                 </div>
             </div>
