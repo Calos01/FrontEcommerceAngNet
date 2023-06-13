@@ -31,4 +31,7 @@ export class NavigationService {
     let url=this.baseurl+'RegisterUser';
     return this.http.post(url,user,{responseType:'text'})
   }
+  loginUser(email:string,pass:string){
+    return this.http.post(this.baseurl+'LoginUser',{Email:email,Password:pass},{responseType:'text'})
+  }
 }
