@@ -50,7 +50,7 @@ export interface User{
     lastName: string,
     email: string,
     address: string,
-    mobile: number,
+    mobile: string,
     password: string,
     createdAt: string,
     modifiedAt: string

@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
 
   }
   saveReview(){
-    let review=this.controlReview.value;
+     let review=this.controlReview.value;
     if((review=='')||(review=null)){
       this.showError=true;
     }
