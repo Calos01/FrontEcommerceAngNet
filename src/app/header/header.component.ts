@@ -3,6 +3,7 @@ import { Category, HeaderCategories } from '../models/models';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { NavigationService } from '../services/navigation.service';
+import { UtilityService } from '../services/utility.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit{
   /**
    *
    */
-  constructor(private _serviceNavigation:NavigationService) {    
+  constructor(private _serviceNavigation:NavigationService, public serviceUtility:UtilityService) {    
   }
   itemcategories:HeaderCategories[]=[
     // {
