@@ -34,4 +34,22 @@ export class NavigationService {
   loginUser(email:string,pass:string){
     return this.http.post(this.baseurl+'LoginUser',{Email:email,Password:pass},{responseType:'text'})
   }
+  submitReview(userid:number,productid:number,review:string){
+    let url=this.baseurl+'InsertReview';
+    let usuario:any={
+      User:{
+        userId:userid
+      },
+      Product:{
+        id:productid
+      },
+      review:review
+    }
+    return this.http.post(url,usuario,{responseType:'text'})
+  }
+
+  listreview(prodid:number){
+    let url=this.baseurl+"GetReviews/"+prodid;
+    return this.http.get<any[]>(url);
+  }
 }

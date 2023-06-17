@@ -43,7 +43,7 @@ export class UtilityService {
     localStorage.setItem('user',token)
   }
   estaLogeado(){
-    localStorage.getItem('user')
+    return localStorage.getItem('user')
   }
   removeUser(){
     localStorage.removeItem('user')
