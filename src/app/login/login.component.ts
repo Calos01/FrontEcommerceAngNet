@@ -11,7 +11,7 @@ import { UtilityService } from '../services/utility.service';
 export class LoginComponent implements OnInit{
   loginForm!:FormGroup
   message!:string;
-  constructor(private fb:FormBuilder,private _navigationService:NavigationService, private _utilityService:UtilityService) {}
+  constructor(private fb:FormBuilder,private _navigationService:NavigationService, public _utilityService:UtilityService) {}
   ngOnInit(): void {
     this.loginForm=this.fb.group({
       email:['', [Validators.required,Validators.email,Validators.maxLength(30)]],

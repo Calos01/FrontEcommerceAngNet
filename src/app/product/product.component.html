@@ -18,7 +18,7 @@
         </div>
     
         <div class="card-footer text-center d-grid gap-2">
-            <button class="btn btn-outline-success">Add Cart</button>
+            <button class="btn btn-outline-success" [disabled]="!utilityService.estaLogeado()">Add Cart <span *ngIf="!utilityService.estaLogeado()">(logeate)</span></button>
         </div>
     </div>
 </div>
@@ -44,7 +44,7 @@
                     <h2 class="text-danger text-decoration-line-through">{{product.price}}</h2>
                 </div>
                 <div class="card-footer text-center d-grid gap-2">
-                    <button class="btn btn-outline-success">Add Cart</button>
+                    <button class="btn btn-outline-success" [disabled]="!utilityService.estaLogeado()">Add Cart <span *ngIf="!utilityService.estaLogeado()">(logeate)</span></button>
                 </div>
             </div>
         </div>
