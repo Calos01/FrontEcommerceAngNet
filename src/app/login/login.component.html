@@ -32,5 +32,6 @@
     </div>
     <div class="row my-3 mx-auto">
         <button class="d-block mx-auto btn btn-outline-primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <span class="text-success text-center" *ngIf="_utilityService.estaLogeado()">Login Correcto</span>
     </div>
 </form>

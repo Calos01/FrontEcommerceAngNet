@@ -24,9 +24,9 @@ export class ProductDetailsComponent implements OnInit {
       let prodid=param.id;
       this._navigationService.getProduct(prodid).subscribe((data:any)=>{
         this.product=data;
+        this.listadoreviews();
       })
     })
-    this.listadoreviews();
     console.log(this.product);
   } 
 
@@ -38,9 +38,10 @@ export class ProductDetailsComponent implements OnInit {
     
     if((review=='')||(review==null)){
       this.showError=true;
+      this.savedReview=false;
     }
-    //XD sino el review no reconoce piensa q siempre sera null
-    if(review !=null){
+    else{
+      this.showError=false;
       this._navigationService.submitReview(this.utilityService.getUser().userId,this.product.id,review).subscribe(dat=>{
         this.savedReview=true;
         this.listadoreviews();
