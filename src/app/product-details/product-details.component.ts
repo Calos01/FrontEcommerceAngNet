@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../services/navigation.service';
-import { Product } from '../models/models';
+import { Product, Review } from '../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { UtilityService } from '../services/utility.service';
 import { FormControl } from '@angular/forms';
@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   controlReview = new FormControl('');
   showError:boolean=false;
   savedReview:boolean=false;
+  otrosReviews:Review[]=[];
 
   ngOnInit(): void { 
     //obtener producto detail
@@ -25,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product=data;
       })
     })
+    this.listadoreviews();
     console.log(this.product);
   } 
 
@@ -33,10 +35,25 @@ export class ProductDetailsComponent implements OnInit {
   }
   saveReview(){
     let review=this.controlReview.value;
-    if((review=='')||(review=null)){
+    
+    if((review=='')||(review==null)){
       this.showError=true;
     }
-    return true;
+    //XD sino el review no reconoce piensa q siempre sera null
+    if(review !=null){
+      this._navigationService.submitReview(this.utilityService.getUser().userId,this.product.id,review).subscribe(dat=>{
+        this.savedReview=true;
+        this.listadoreviews();
+        this.controlReview.setValue('');
+      });
+    }
+    
   }
-
+  listadoreviews(){
+    this._navigationService.listreview(this.product.id).subscribe((dat:any[])=>{
+      for(let rev of dat){
+        this.otrosReviews.push(rev)
+      }
+    })
+  }
 }

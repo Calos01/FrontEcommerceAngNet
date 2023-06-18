@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from '../services/navigation.service';
+import { UtilityService } from '../services/utility.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { NavigationService } from '../services/navigation.service';
 export class LoginComponent implements OnInit{
   loginForm!:FormGroup
   message!:string;
-  constructor(private fb:FormBuilder,private _navigationService:NavigationService) {}
+  constructor(private fb:FormBuilder,private _navigationService:NavigationService, private _utilityService:UtilityService) {}
   ngOnInit(): void {
     this.loginForm=this.fb.group({
       email:['', [Validators.required,Validators.email,Validators.maxLength(30)]],
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit{
       let msg=dat.toString();
       if(msg!='invalid'){
         this.message='Login Correcto'
+        this._utilityService.setUser(msg);
+        console.log(this._utilityService.getUser());
       }else{
         this.message='Login incorrecto'
       }

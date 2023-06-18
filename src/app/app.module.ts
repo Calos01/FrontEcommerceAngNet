@@ -19,7 +19,7 @@ import { HeaderProductDetailsDirective } from './directives/header-product-detai
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import {JwtModule} from '@auth0/angular-jwt'
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:()=>{
+          return localStorage.getItem('user');
+        },
+        allowedDomains:['localhost:7086']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

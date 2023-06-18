@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit{
       pwd:['', [Validators.required,Validators.minLength(6),Validators.maxLength(16)]],
       rpwd:['', [Validators.required,Validators.minLength(6),Validators.maxLength(16)]]
     })
-   
+    
   }
   //metodo
   Registrar(){

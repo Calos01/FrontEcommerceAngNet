@@ -28,10 +28,10 @@
             <ul class="btn-group" role="group">
                 <li class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalform" (click)="mostrarModal('login')">Login</li>
                 <li class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalform" (click)="mostrarModal('register')">Register</li>
-                <li class="btn btn-outline-light">Cuenta</li>
-                <li class="btn btn-outline-light" routerLink="/cart">Carrito</li>
-                <li class="btn btn-outline-light" routerLink="/orders">Orders</li>
-                <li class="btn btn-outline-light">Salir</li>
+                <li class="btn btn-outline-light" *ngIf="serviceUtility.estaLogeado()">Cuenta</li>
+                <li class="btn btn-outline-light" routerLink="/cart" *ngIf="serviceUtility.estaLogeado()" >Carrito</li>
+                <li class="btn btn-outline-light" routerLink="/orders" *ngIf="serviceUtility.estaLogeado()">Orders</li>
+                <li class="btn btn-outline-light" (click)="serviceUtility.removeUser()" *ngIf="serviceUtility.estaLogeado()">Salir</li>
             </ul>
         </div>
     </div>

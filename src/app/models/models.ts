@@ -50,9 +50,16 @@ export interface User{
     lastName: string,
     email: string,
     address: string,
-    mobile: number,
+    mobile: string,
     password: string,
     createdAt: string,
-    modifiedAt: string
-      
+    modifiedAt: string    
+}
+
+export interface Review{
+    id:number,
+    user:User,
+    product:Product,
+    review:string,
+    cretedAt: string
 }

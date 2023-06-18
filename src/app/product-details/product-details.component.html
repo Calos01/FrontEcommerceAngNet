@@ -28,7 +28,7 @@
                 <h2 class="text-danger text-decoration-line-through">S/.{{product.price}}</h2>
             </div>
             <div class="card-footer text-center d-grid gap-2">
-                <button class="btn btn-outline-success">Add Cart</button>
+                <button class="btn btn-outline-success" [disabled]="utilityService.estaLogeado()">Add Cart <span *ngIf="!utilityService.estaLogeado()">(logeate)</span></button>
             </div>
             <div>
                 <h3 class="card-text">Descripcion</h3>
@@ -52,23 +52,23 @@
             <div class="d-flex align-items-start mt-4">
                 <button class="btn btn-outline-secondary" (click)="saveReview()">Save Review</button>
                 <div class="ms-5">
-                    <p class="text-danger">Registrate primero para que puedas escribir un comentario</p>
+                    <p class="text-danger" *ngIf="!utilityService.estaLogeado()">Registrate primero para que puedas escribir un comentario</p>
                     <p class="text-danger" *ngIf="showError">El comentario esta vacio</p>
-                    <p class="text-success">Tu Comentario ha sido guardado exitosamente</p>
-                </div>
+                    <p class="text-success" *ngIf="savedReview">Tu Comentario ha sido guardado exitosamente</p>
+                </div>  
             </div>
         </div>
         <div class="col-6">
             <h3>Otros comentarios</h3>
-            <h5 *ngIf="1">No tienes comentarios</h5>
-            <div *ngFor="let item of [1,2,3]">
+            <h5 *ngIf="otrosReviews==[]">No tienes comentarios</h5>
+            <div *ngFor="let item of otrosReviews">
                 <div class="card my-2 me-4">
                     <div class="card-header d-flex justify-content-between">
-                        <p class="card-title"> Usuario Biscor</p>
-                        <p class="card-title fst-italic">Publicado el: <span class="fw-bold"> {{"26 MAY 2023" | date:"dd-MMM-yyyy"}}</span></p>
+                        <p class="card-title"> {{item.user.firstName}}</p>
+                        <p class="card-title fst-italic">Publicado el: <span class="fw-bold"> {{item.cretedAt}}</span></p>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Comentario</p>
+                        <p class="card-text">{{item.review}}</p>
                     </div>
                 </div>
             </div>
