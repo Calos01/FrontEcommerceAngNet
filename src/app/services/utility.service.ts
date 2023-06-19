@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/models';
+import { Product, User } from '../models/models';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Subject } from 'rxjs';
+import { NavigationService } from './navigation.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
-
-  constructor(private jwt:JwtHelperService) { }
+  changenroItem= new Subject();
+  constructor(private jwt:JwtHelperService, private _navigationService:NavigationService) { }
   calcularFinalPrice(price:number,discount:number):number{
     let finalprice=price-(price*discount/100);
     return finalprice
@@ -47,5 +49,24 @@ export class UtilityService {
   }
   removeUser(){
     localStorage.removeItem('user')
+  }
+
+  /**
+   * *Metodos utilizado para aumentar el nro de Item en el header carrito
+   * ?Usamos changenroItem= new Subject(); que emite y recibe eventos, valores a la vez
+   * !.next para emitir y subscribe para recibir
+   * @
+   */
+  addNroItem(product:Product){
+    let productid=product.id;
+    let userid=this.getUser().userId;
+    this._navigationService.addCart(productid,userid).subscribe((res:any)=>{
+      
+      if(res.toString()=='insertado'){
+        this.changenroItem.next(1);
+      }
+    })
+
+    
   }
 }

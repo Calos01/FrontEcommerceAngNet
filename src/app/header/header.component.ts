@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit{
     //   subcategories:['lavadora', 'refri']
     // }
   ];
+  nroItem:number=0;
   ngOnInit(): void {
     //Mostrar Select de Categories
     this._serviceNavigation.getListCategories().subscribe((list:Category[])=>{
@@ -53,6 +54,14 @@ export class HeaderComponent implements OnInit{
         }
       }
     });
+
+    /**
+   * *Jalamos el objeto changenroItem quien es nuestro subject se sumara cada vez que den click en Addcart
+   * ?cada vez que hacen click con el .next me envia 1
+   */
+    this.serviceUtility.changenroItem.subscribe((res:any)=>{
+      this.nroItem += parseInt(res);
+    })
   }
   mostrarModal(name:string){
     this.container.clear()
