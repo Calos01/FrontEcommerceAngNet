@@ -10,7 +10,7 @@ import { UtilityService } from '../services/utility.service';
 export class ProductComponent implements OnInit{
   //para mostrar vista de forma grid o list
   @Input() view: 'grid'|'list'|'cartitem'|'prevcartitem'='grid';
-  @Input() product: Product={
+  @Input()  product: Product={
     id: 0,
     title: '',
     description: '',

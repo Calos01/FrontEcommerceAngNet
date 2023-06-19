@@ -63,3 +63,16 @@ export interface Review{
     review:string,
     cretedAt: string
 }
+
+//Para el componente cart
+export interface Cart{
+    id:number,
+    user:User,
+    cartItems:CartItem[],
+    ordered:boolean,
+    orderedon:string
+}
+export interface CartItem{
+    id:number,
+    product:Product
+}

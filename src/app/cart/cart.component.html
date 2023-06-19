@@ -32,8 +32,8 @@
     <div class="">
         <h2 class="ms-5">Cart Items</h2>
         <div class="row col-8 d-flex justify-content-center mx-auto g-5">
-            <div class="col-6 w-5" *ngFor="let item of [1,1,1,1,1]">
-                <app-product [view]="'cartitem'"></app-product>
+            <div class="col-6 w-5" *ngFor="let item of cart.cartItems">
+                <app-product [view]="'cartitem'" [product]="item.product"></app-product>
             </div>
         </div>
     </div>
