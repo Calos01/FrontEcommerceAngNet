@@ -60,13 +60,11 @@ export class UtilityService {
   addNroItem(product:Product){
     let productid=product.id;
     let userid=this.getUser().userId;
-    this._navigationService.addCart(productid,userid).subscribe((res:any)=>{
+    this._navigationService.addCart(userid, productid).subscribe((res:any)=>{
       
       if(res.toString()=='insertado'){
         this.changenroItem.next(1);
       }
     })
-
-    
   }
 }
