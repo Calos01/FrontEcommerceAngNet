@@ -28,7 +28,8 @@
                 <h2 class="text-danger text-decoration-line-through">S/.{{product.price}}</h2>
             </div>
             <div class="card-footer text-center d-grid gap-2">
-                <button class="btn btn-outline-success" [disabled]="!utilityService.estaLogeado()">Add Cart <span *ngIf="!utilityService.estaLogeado()">(logeate)</span></button>
+                <button class="btn btn-outline-success" [disabled]="!utilityService.estaLogeado()" (click)="utilityService.addNroItem(product)">Add Cart 
+                    <span *ngIf="!utilityService.estaLogeado()">(logeate)</span></button>
             </div>
             <div>
                 <h3 class="card-text">Descripcion</h3>

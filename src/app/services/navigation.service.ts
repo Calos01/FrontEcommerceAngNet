@@ -52,4 +52,9 @@ export class NavigationService {
     let url=this.baseurl+"GetReviews/"+prodid;
     return this.http.get<any[]>(url);
   }
+
+  addCart(userid:number, productid:number){
+    let url=this.baseurl+'InsertCartItem/'+userid+'/'+productid;
+    return this.http.post(url,null,{responseType:'text'})
+  }
 }
