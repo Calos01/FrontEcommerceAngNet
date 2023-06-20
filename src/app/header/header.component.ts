@@ -55,6 +55,13 @@ export class HeaderComponent implements OnInit{
       }
     });
 
+    //Igual contador del carrito con el nro de items o productos agragados
+    if(this.serviceUtility.estaLogeado()){
+      this._serviceNavigation.getCartActive(this.serviceUtility.getUser().userId).subscribe((dat:any)=>{
+        this.nroItem=dat.cartItems.length;
+      });
+    }
+    
     /**
    * *Jalamos el objeto changenroItem quien es nuestro subject se sumara cada vez que den click en Addcart
    * ?cada vez que hacen click con el .next me envia 1

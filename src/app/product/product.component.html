@@ -74,12 +74,12 @@
 <!-- vista-prevcartitems -->
 <div class="prevcartitem-view" *ngIf="view=='prevcartitem'">
     <div class="card">
-        <div class="row d-flex justify-content-center">
-            <div class="row col-md-8 overflow-hidden justify-content-center align-items-center">
+        <div class="row d-flex-column justify-content-center">
+            <div class="row-md-8 overflow-hidden justify-content-center align-items-center">
                 <img class="img-fluid rounded-start" src="../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
             </div>
-            <div class="row">
-                <h3 class="card-title text-center">Title</h3>
+            <div class="row row-md-4">
+                <h6 class="card-title text-center text-truncate">{{product.title}}</h6>
             </div>
         </div>
     </div>       

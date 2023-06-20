@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product, User } from '../models/models';
+import { Cart, Payment, Product, User } from '../models/models';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
 import { NavigationService } from './navigation.service';
@@ -10,6 +10,7 @@ import { NavigationService } from './navigation.service';
 export class UtilityService {
   changenroItem= new Subject();
   constructor(private jwt:JwtHelperService, private _navigationService:NavigationService) { }
+
   calcularFinalPrice(price:number,discount:number):number{
     let finalprice=price-(price*discount/100);
     return finalprice
@@ -69,7 +70,36 @@ export class UtilityService {
   }
 
   //Calcular payment
-  calcularPaymet(){
+  calcularPaymet(cart:Cart,payment:Payment){
+    payment.montoTotal=0;
+    payment.montoDescuento=0;
+    payment.precioPagar=0;
 
+    for(let item of cart.cartItems){
+      payment.montoTotal+=item.producto.price;
+      payment.montoDescuento+=item.producto.price-this.calcularFinalPrice(item.producto.price,item.producto.offer.discount);
+      payment.precioPagar+=this.calcularFinalPrice(item.producto.price,item.producto.offer.discount);
+    }
+    if(payment.precioPagar>20000){
+      payment.costoEnvio=2000
+    }
+    else if(payment.precioPagar>=5000){
+      payment.costoEnvio=500
+    }
+    else if(payment.precioPagar>=1000){
+      payment.costoEnvio=300
+    }
+    else{
+      payment.costoEnvio=200
+    }
+  }
+
+  //Calcular Precio Pagado
+  calularPrecioPagado(cart:Cart){
+    var total=0;
+    for(let item of cart.cartItems ){
+      total += this.calcularFinalPrice(item.producto.price,item.producto.offer.discount);
+    }
+    return total;
   }
 }

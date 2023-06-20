@@ -19,7 +19,7 @@ export class CartComponent implements OnInit{
     ordered:false,
     orderedon:""
   }
-
+  cartPrevious:Cart[]=[];
   UserPaymentInfo:Payment={
     id:0,
     user: this._utilityService.getUser(),
@@ -40,9 +40,11 @@ export class CartComponent implements OnInit{
   ngOnInit(): void {
     this.navigateService.getCartActive(this._utilityService.getUser().userId).subscribe((dat:any)=>{
       this.cart=dat;
+      this._utilityService.calcularPaymet(this.cart,this.UserPaymentInfo);
       console.log(this.cart);
-    })
+    });
+    this.navigateService.getPreviousCart(this._utilityService.getUser().userId).subscribe((dat:any)=>{
+      this.cartPrevious=dat;
+    });
   }
-  
-
 }

@@ -37,8 +37,8 @@
             <h4 class="col-6 d-flex justify-content-end pe-5">Seleccionar metodo de pago:</h4>
             <select class="form-select me-5" [formControl]="metodopagoform" >
                 <option value="0">Seleccionar Pago</option>
-                <option *ngFor="let metodopago of [1,2,3]" value="{{metodopago}}">
-                    option
+                <option *ngFor="let metodopago of paymentMethods" value="{{metodopago.id}}">
+                    {{metodopago.tipo}} <span> - {{metodopago.proveedor}}</span>
                 </option>
             </select>
         </div>
