@@ -28,16 +28,17 @@
             </tr>
         </table>
     </div>
-<!-- Cart items -->
+    <!-- Cart items -->
     <div class="">
         <h2 class="ms-5">Cart Items</h2>
         <div class="row col-8 d-flex justify-content-center mx-auto g-5">
             <div class="col-6 w-5" *ngFor="let item of cart.cartItems">
-                <app-product [view]="'cartitem'" [product]="item.product"></app-product>
+                <!-- es item.producto porque la api me manda con ese nombre -->
+                <app-product [view]="'cartitem'" [product]="item.producto"></app-product>
             </div>
         </div>
     </div>
-<!-- PrevCartItems -->
+    <!-- PrevCartItems -->
     <div class="">
         <h2 class="ms-5">Prev Carts</h2>
         <div *ngFor="let item of [1,1,1]">
@@ -47,7 +48,7 @@
                     <h5 class="fw-bold">Items:5</h5>
                     <h5 class="fw-bold">Items:10,000</h5>
                 </div>
-                
+                      
                 <div class="card-body d-flex gap-4">
                     <div *ngFor="let item of [1,1,1,1,1]">
                         <app-product [view]="'prevcartitem'"></app-product>

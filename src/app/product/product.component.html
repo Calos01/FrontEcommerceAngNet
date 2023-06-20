@@ -52,17 +52,17 @@
 </div>
 <!-- vista-cartitems -->
 <div class="cartitem-view" *ngIf="view=='cartitem'">
-    <div class="card d-flex flex-column">
+    <div class="card">
         <div class="row">
-            <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img class="img-fluid rounded-start" src="../../assets/images/mobiles/7.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
+            <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
+                <img class="img-fluid rounded-start" src="../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
             </div>
-            <div class="col">
+            <div class="col-8">
                 <div class="card-body">
                     <h3 class="card-title">{{product.title}}</h3>
-                    <h4 class="text-success">FinalPrice <span class="text-primary">-{{product.offer.discount}}%</span></h4>
+                    <h4 class="text-success">{{utilityService.calcularFinalPrice(product.price, product.offer.discount)}}  <span class="text-primary">-{{product.offer.discount}}%</span></h4>
                     <h4 class="text-danger text-decoration-line-through">{{product.price}}</h4>
-                    <h5 class="card-subtitle text-primary">{{product.quantity}} products disponibles</h5>
+                    <h5 class="card-subtitle text-primary">{{product.quantity}} productos disponibles</h5>
                 </div>
                 <div class="card-footer text-center d-grid gap-2">
                     <button class="btn btn-outline-danger">Remove from Cart</button>
@@ -72,11 +72,11 @@
     </div>       
 </div>
 <!-- vista-prevcartitems -->
-<div class="cartitem-view" *ngIf="view=='prevcartitem'">
+<div class="prevcartitem-view" *ngIf="view=='prevcartitem'">
     <div class="card">
         <div class="row d-flex justify-content-center">
             <div class="row col-md-8 overflow-hidden justify-content-center align-items-center">
-                <img class="img-fluid rounded-start" src="../../assets/images/celulares/1.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
+                <img class="img-fluid rounded-start" src="../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}.webp" alt="" appHeaderProductDetails [prodid]="product.id">   
             </div>
             <div class="row">
                 <h3 class="card-title text-center">Title</h3>

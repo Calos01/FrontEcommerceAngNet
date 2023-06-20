@@ -31,3 +31,8 @@ img:hover{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.cartitem-view{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
