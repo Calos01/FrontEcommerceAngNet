@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category, User } from '../models/models';
+import { Category, PaymentMethod, User } from '../models/models';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -55,11 +55,24 @@ export class NavigationService {
 
   addCart(userid:number, productid:number){
     let url=this.baseurl+'InsertCartItem/'+userid+'/'+productid;
-    return this.http.post(url,null,{responseType:'text'})
+    return this.http.post(url,null,{responseType:'text'});
   }
 
+  //carrito por usuario
   getCartActive(userid:number){
     let url=this.baseurl+'GetCartActivoPorUser/'+userid;
-    return this.http.get(url)
+    return this.http.get(url);
+  }
+
+  //previous CartItems
+  getPreviousCart(userid:number){
+    let url=this.baseurl+"GetPreviousCart/"+userid;
+    return this.http.get(url);
+  }
+
+  //getPaymentMethods
+  getPaymentMethods(payid:number){
+    let url=this.baseurl+"GetPaymentMethods/"+payid;
+    return this.http.get<PaymentMethod[]>(url);
   }
 }
