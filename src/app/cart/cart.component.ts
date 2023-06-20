@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../models/models';
+import { Cart, Payment } from '../models/models';
 import { NavigationService } from '../services/navigation.service';
 import { UtilityService } from '../services/utility.service';
 
@@ -19,10 +19,30 @@ export class CartComponent implements OnInit{
     ordered:false,
     orderedon:""
   }
+
+  UserPaymentInfo:Payment={
+    id:0,
+    user: this._utilityService.getUser(),
+    paymentMethod:{
+      id:0,
+      tipo: "",
+      proveedor: "",
+      disponible:false,
+      razon:""
+    },
+    montoTotal:0,
+    montoDescuento:0,
+    precioPagar:0,
+    costoEnvio:0 ,
+    createdAt:""
+  }
+  
   ngOnInit(): void {
     this.navigateService.getCartActive(this._utilityService.getUser().userId).subscribe((dat:any)=>{
       this.cart=dat;
+      console.log(this.cart);
     })
   }
+  
 
 }

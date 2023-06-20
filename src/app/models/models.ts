@@ -74,5 +74,24 @@ export interface Cart{
 }
 export interface CartItem{
     id:number,
-    product:Product
+    producto:Product
+}
+
+//Para el componente cart hallar costos
+export interface PaymentMethod{
+    id:number,
+    tipo: string,
+    proveedor: string,
+    disponible:boolean,
+    razon:string
+}
+export interface Payment{
+    id:number,
+    user:User,
+    paymentMethod:PaymentMethod,
+    montoTotal:number,
+    montoDescuento:number,
+    precioPagar:number,
+    costoEnvio:number ,
+    createdAt:string
 }

@@ -67,4 +67,9 @@ export class UtilityService {
       }
     })
   }
+
+  //Calcular payment
+  calcularPaymet(){
+
+  }
 }
