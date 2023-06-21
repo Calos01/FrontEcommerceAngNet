@@ -71,8 +71,8 @@ export class NavigationService {
   }
 
   //getPaymentMethods
-  getPaymentMethods(payid:number){
-    let url=this.baseurl+"GetPaymentMethods/"+payid;
+  getPaymentMethods(){
+    let url=this.baseurl+"GetPaymentMethods";
     return this.http.get<PaymentMethod[]>(url);
   }
 }
