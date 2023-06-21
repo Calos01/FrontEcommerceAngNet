@@ -45,6 +45,6 @@ export class CartComponent implements OnInit{
     });
     this.navigateService.getPreviousCart(this._utilityService.getUser().userId).subscribe((dat:any)=>{
       this.cartPrevious=dat;
-    });
+    }); 
   }
 }

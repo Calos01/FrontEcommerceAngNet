@@ -8,23 +8,23 @@
         <table class="table table-bordered border-dark col-12 shadow mx-auto">
             <tr class="">
                 <td colspan="7" class="p-2">Total Items</td>
-                <td colspan="5" class="fw-bold text-dark">5</td>
+                <td colspan="5" class="fw-bold text-dark">{{cart.cartItems.length}}</td>
             </tr>
             <tr>
                 <td colspan="7" class="p-2">Total Price</td>
-                <td colspan="5" class="fw-bold text-danger">10,000</td>
+                <td colspan="5" class="fw-bold text-danger">{{UserPaymentInfo.montoTotal}}</td>
             </tr>
             <tr>
                 <td colspan="7" class="p-2">Shipping Charges</td>
-                <td colspan="5" class="fw-bold text-danger">1,000</td>
+                <td colspan="5" class="fw-bold text-danger">{{UserPaymentInfo.costoEnvio}}</td>
             </tr>
             <tr>
                 <td colspan="7" class="p-2">Discount</td>
-                <td colspan="5" class="fw-bold text-success">200</td>
+                <td colspan="5" class="fw-bold text-success">{{UserPaymentInfo.montoDescuento}}</td>
             </tr>
             <tr>
                 <td colspan="7" class="p-2">You have to pay</td>
-                <td colspan="5" class="fw-bold text-success">10,800</td>
+                <td colspan="5" class="fw-bold text-success">{{UserPaymentInfo.precioPagar}}</td>
             </tr>
         </table>
     </div>
@@ -38,7 +38,7 @@
             <select class="form-select me-5" [formControl]="metodopagoform" >
                 <option value="0">Seleccionar Pago</option>
                 <option *ngFor="let metodopago of paymentMethods" value="{{metodopago.id}}">
-                    {{metodopago.tipo}} <span> - {{metodopago.proveedor}}</span>
+                    {{metodopago.tipo}} <span *ngIf="metodopago.proveedor!=''"> - {{metodopago.proveedor}}</span>
                 </option>
             </select>
         </div>
@@ -49,33 +49,34 @@
     </div>
     <div class="col-6 d-flex-col justify-content-center align-items-center mx-auto" *ngIf="metodopagoname!=''">
         <table class="table table-bordered border-dark col-12 shadow mx-auto">
-            <tr >
+            <tr>
                 <td class="p-2 col-7">Tu pago es</td>
-                <td class="fw-bold text-dark col-5">10,505</td>
+                <td class="fw-bold text-dark col-5">{{UserPaymentInfo.precioPagar}}</td>
             </tr>
             <tr>
                 <td  class="p-2 col-7">Metodo de pago</td>
-                <td  class="fw-bold text-danger col-5">Izipay</td>
+                <td  class="fw-bold text-danger col-5">{{this.getformatoPayment(metodopagoname)}}</td>
             </tr>
             <tr>
                 <td  class="p-2 col-7">Direccion</td>
-                    <td *ngIf="true" colspan="5" class="fw-bold text-danger col-5">la direccion ira aca. <a href="/misdatos">cambiar</a> </td>
+                    <td *ngIf="true" colspan="5" class="fw-bold text-danger col-5">{{serviceUtility.getUser().address}} <a href="/misdatos">cambiar</a> </td>
                     <td *ngIf="false" colspan="5" class="fw-bold text-danger col-5">porfavor ingrese direccion <a href="/misdatos">cambiar</a> </td>
             </tr>
             <tr>
                 <td  class="p-2 col-7">Telefono</td>
-                    <td *ngIf="true"  class="fw-bold text-danger col-5">12345678. <a href="/misdatos">cambiar</a> </td>
+                    <td *ngIf="true"  class="fw-bold text-danger col-5">{{serviceUtility.getUser().mobile}}<a href="/misdatos">cambiar</a> </td>
                     <td *ngIf="false" class="fw-bold text-danger col-5">porfavor ingrese telefono <a href="/misdatos">cambiar</a> </td>
             </tr>
             
         </table>
-        <div>
-            <button class="btn-outline-success">Pagar</button>
-        </div>
-        <div *ngIf="!false" class="spinner-border" role="status">
+        <div class="mb-4">
+            <button class="btn-outline-success" (click)="realizarOrden()">Pagar</button>
+        
+        <div *ngIf="spinner" class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <span>Error</span>
+            <span class="mx-4 d-flex-row {{classcolor}}" (click)="realizarOrden()">{{messageOrden}}</span>
+        </div>
     </div>
 
 </div>
