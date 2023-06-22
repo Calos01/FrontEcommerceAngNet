@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category, PaymentMethod, User } from '../models/models';
+import { Category, Order, Payment, PaymentMethod, User } from '../models/models';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -74,5 +74,17 @@ export class NavigationService {
   getPaymentMethods(){
     let url=this.baseurl+"GetPaymentMethods";
     return this.http.get<PaymentMethod[]>(url);
+  }
+
+  //Insertamos el pago en tabla Payments
+  insertPayment(payment:Payment){
+    let url=this.baseurl+'InsertedPayment';
+    return this.http.post(url,payment,{responseType:'text'});
+  }
+
+  //Insertamos la orden luego del pago
+  insertOrden(orden:Order){
+    let url=this.baseurl+'InsertedOrder';
+    return this.http.post(url,orden,{responseType:'text'});
   }
 }
