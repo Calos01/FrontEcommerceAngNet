@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationService } from '../services/navigation.service';
 import { UtilityService } from '../services/utility.service';
-import { Cart, Payment, PaymentMethod } from '../models/models';
+import { Cart, Order, Payment, PaymentMethod } from '../models/models';
 import { timer } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -93,6 +93,7 @@ export class OrderComponent implements OnInit{
         }
         if(step==3){
           this.messageOrden='Se ha realizado el pago. Su orden ha sido guardada'
+          this.spinner=false; 
         } 
         if(step==4){
           this.router.navigateByUrl('/home');
@@ -100,8 +101,51 @@ export class OrderComponent implements OnInit{
         }
       });
     }
+
+    this.guardarOrden();
   }
   realizopago(){
     return true;
+  }
+  //Para guardar datos de orden y pago
+  guardarOrden(){
+    let payment: Payment;
+    let pmid=0;
+    if(this.metodopagoform){
+        pmid=parseInt(this.metodopagoform.value);
+    }
+
+    payment={
+      id:0,
+      user: this.serviceUtility.getUser(),
+      paymentMethod:{
+        id:pmid,
+        tipo: "",
+        proveedor: "",
+        disponible:false,
+        razon:""
+      },
+      montoTotal: this.UserPaymentInfo.montoTotal,
+      montoDescuento:this.UserPaymentInfo.montoDescuento,
+      precioPagar:this.UserPaymentInfo.precioPagar,
+      costoEnvio:this.UserPaymentInfo.costoEnvio,
+      createdAt:""
+    }
+
+    this._serviceNavigation.insertPayment(payment).subscribe((dat:any)=>{
+      payment.id=parseInt(dat);
+      let orden:Order={
+        id:0,
+        user:this.serviceUtility.getUser(),
+        cart:this.cart,
+        payment:payment,
+        createdat:''
+      }
+      
+      //cambiamos el numero del carrito a 0 cuando se realizo la orden
+      this._serviceNavigation.insertOrden(orden).subscribe((dat:any)=>{
+        this.serviceUtility.changenroItem.next(0);
+      })  
+    })
   }
 }

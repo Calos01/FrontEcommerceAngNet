@@ -95,3 +95,11 @@ export interface Payment{
     costoEnvio:number ,
     createdAt:string
 }
+
+export interface Order{
+    id:number,
+    user:User,
+    cart:Cart,
+    payment:Payment,
+    createdat:string
+}

@@ -67,7 +67,11 @@ export class HeaderComponent implements OnInit{
    * ?cada vez que hacen click con el .next me envia 1
    */
     this.serviceUtility.changenroItem.subscribe((res:any)=>{
-      this.nroItem += parseInt(res);
+      if(parseInt(res)==0){
+        this.nroItem=0;
+      }else{
+        this.nroItem += parseInt(res);
+      }
     })
   }
   mostrarModal(name:string){
