@@ -5,6 +5,9 @@ import { UtilityService } from '../services/utility.service';
 import { Cart, Order, Payment, PaymentMethod } from '../models/models';
 import { timer } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-order',
@@ -107,6 +110,23 @@ export class OrderComponent implements OnInit{
   realizopago(){
     return true;
   }
+  //generar pdf pago
+  generapdf(data: UserPaymentInfo){
+    const pdfDefinition:any={
+      content:[{
+        table:{
+          body:[
+            ['USER','mONTOtOTAL','pRECIOpAGAR'],
+            [data.user,data.montoTotal,data.precioPagar]
+          ]
+        }
+      }
+      ]
+    }
+    const pdf=pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
   //Para guardar datos de orden y pago
   guardarOrden(){
     let payment: Payment;
