@@ -7,7 +7,7 @@ import { timer } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-order',
@@ -49,6 +49,7 @@ export class OrderComponent implements OnInit{
   }
 
   constructor(private _serviceNavigation:NavigationService, public serviceUtility:UtilityService, private router:Router) {
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
   ngOnInit(): void {
     this.metodopagoform.valueChanges.subscribe((res:any)=>{
@@ -61,7 +62,7 @@ export class OrderComponent implements OnInit{
     //Lista Payment methods
     this._serviceNavigation.getPaymentMethods().subscribe((dat:any)=>{
       this.paymentMethods=dat;
-      //console.log(this.paymentMethods);
+      // console.log(this.paymentMethods);
     })
     //cuadro de order
     this._serviceNavigation.getCartActive(this.serviceUtility.getUser().userId).subscribe((dat:any)=>{
@@ -101,30 +102,57 @@ export class OrderComponent implements OnInit{
         if(step==4){
           this.router.navigateByUrl('/home');
           count.unsubscribe();
-        }
-      });
+        }   
+      });     
     }
-
     this.guardarOrden();
   }
   realizopago(){
     return true;
   }
   //generar pdf pago
-  generapdf(data: UserPaymentInfo){
+  generapdf(){
     const pdfDefinition:any={
-      content:[{
-        table:{
-          body:[
-            ['USER','mONTOtOTAL','pRECIOpAGAR'],
-            [data.user,data.montoTotal,data.precioPagar]
-          ]
+        content:[
+        { text: 'Logo de la Empresa', alignment: 'center', margin: [0, 0, 0, 10] },
+        { text: 'Recibo', style: 'header' },
+        { text: 'Fecha: ', style: 'subheader' },
+        { text: 'Cliente: ' + this.UserPaymentInfo.user.firstName },
+        { text: 'Total: ' + this.UserPaymentInfo.precioPagar },
+        { text: 'Productos:', style: 'subheader' },
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*', '*', '*'],
+            body: [
+              ['Id', 'Nombre', 'Subtotal'],
+              ...this.cart.cartItems.map((cartitem: any) => [cartitem.id, cartitem.producto.title, cartitem.producto.price])
+            ]
+          },
+          layout: {
+            fillColor: '#3498db'
+          } 
+        }  
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+          margin: [0, 0, 0, 10]
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 0, 0, 5]
         }
+      },
+      defaultStyle: {
+        fontSize: 12
       }
-      ]
-    }
-    const pdf=pdfMake.createPdf(pdfDefinition);
-    pdf.open();
+    };
+    
+    pdfMake.createPdf(pdfDefinition).open();
   }
 
   //Para guardar datos de orden y pago
