@@ -1,5 +1,10 @@
 .home-banner button{
     position: absolute;
-    top:50%;
-    left:20%;
+    top:80%;
+    left:25%;
+}
+.banner{
+    
+    max-width: full;
+    height: 700px;
 }
