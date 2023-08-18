@@ -7,21 +7,21 @@ import { ListaProducts } from '../models/models';
 })
 export class HomeComponent {
 @Input() listproduct:ListaProducts[] =[
-  {bannerimage:'banner/laptops.webp',
+  {bannerimage:'banner/banner-smartphone.png',
     categories:{
       id: 0,
       category: 'electronics',
       subCategory: 'mobiles',
     }
   },
-  {bannerimage:'banner/celulares.jfif',
+  {bannerimage:'banner/banner-laptop.png',
     categories:{
       id: 1,
       category: 'electronics',
       subCategory: 'laptops',
     }
   },
-  {bannerimage:'banner/celulares.jfif',
+  {bannerimage:'banner/banner-smartphone3.png',
     categories:{
       id: 1,
       category: 'furniture',
