@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
+import { PruebasComponent } from './pruebas/pruebas.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {JwtModule} from '@auth0/angular-jwt';
     HeaderProductDirective,
     HeaderProductDetailsDirective,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PruebasComponent
     
   ],
   imports: [
