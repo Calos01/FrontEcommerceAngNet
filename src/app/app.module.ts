@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
 import { PruebasComponent } from './pruebas/pruebas.component';
+import { CuentasComponent } from './cuentas/cuentas.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PruebasComponent } from './pruebas/pruebas.component';
     HeaderProductDetailsDirective,
     LoginComponent,
     RegisterComponent,
-    PruebasComponent
+    PruebasComponent,
+    CuentasComponent
     
   ],
   imports: [
