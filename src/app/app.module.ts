@@ -23,6 +23,7 @@ import {JwtModule} from '@auth0/angular-jwt';
 import { PruebasComponent } from './pruebas/pruebas.component';
 import { CuentasComponent } from './cuentas/cuentas.component';
 import { VentassComponent } from './ventass/ventass.component';
+import { ArreglosComponent } from './arreglos/arreglos.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { VentassComponent } from './ventass/ventass.component';
     RegisterComponent,
     PruebasComponent,
     CuentasComponent,
-    VentassComponent
+    VentassComponent,
+    ArreglosComponent
     
   ],
   imports: [
